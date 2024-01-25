@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const MessageSchema = new Schema({
   name: String,
   message: String,
-  uploadDate: Date,
+  postDate: Date,
 });
 
 module.exports = mongoose.model("Message", MessageSchema);
