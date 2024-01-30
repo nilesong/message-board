@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 function App(){
 
   const [posts, setPosts] = useState([]);
-  const [updateDisplay, setUpdateDisplay] = useState(0);
+  // const [updateDisplay, setUpdateDisplay] = useState(0);
 
   //TO FIX INFINITE LOOP
   useEffect(()=>{
@@ -14,7 +14,7 @@ function App(){
     }
   
     // call the function
-    setInterval(fetchData, 30000)
+    setInterval(fetchData, 5000)
   }, [])
 
   // useEffect(()=>{
@@ -29,35 +29,28 @@ function App(){
   // }, [])
 
   //Force re-render
-  const forceRender = () => {
-    setUpdateDisplay(updateDisplay+1);
-    console.log(updateDisplay);
-  }
+  // const forceRender = () => {
+  //   setUpdateDisplay(updateDisplay+1);
+  //   console.log(updateDisplay);
+  // }
 
   //Create new post
-  const createPost = async () => {
-    try{
-      await fetch(`http://localhost:4000/post`, {method: 'POST'})
-    }catch(err){
-      console.error(err);
-    }
-  }
-
-  const handleCreate = () => {
-    createPost().then(()=>forceRender())
-  }
+  // const handleCreate = async () => {
+  //   try{
+  //     await fetch(`http://localhost:4000/post2`, {method: 'POST'})
+  //   }catch(err){
+  //     console.error(err);
+  //   }
+  // }
   
   //Delete Post
-  const deletePost = async (id) => {
+  const handleDelete = async (id) => {
     try{
       await fetch(`http://localhost:4000/delete/${id}`, {method: 'DELETE'})
     }catch(err){
       console.error(err);
     }
 
-  }
-  const handleDelete = (id) => {
-    deletePost(id).then(()=>forceRender()) 
   }
 
   //Submit Post
@@ -72,7 +65,7 @@ function App(){
   }
 
   const postMessage = async (message) => {
-    await fetch('http://localhost:4000/post2', {
+    await fetch('http://localhost:4000/post', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json',
@@ -87,10 +80,8 @@ function App(){
   return (
   <>
   
-   <p>{updateDisplay}</p>
    <h1>Message Board</h1>
-   <button onClick={handleCreate}>Create</button>
-   {/* <button onClick={handleRefresh}></button> */}
+   {/* <button onClick={handleCreate}>Create</button> */}
 
    <form onSubmit={handleSubmit}>
     <label htmlFor="name">Name: </label>
@@ -99,8 +90,6 @@ function App(){
     <textarea name="message" id="message" cols="30" rows="10"></textarea>
     <button type="submit">Submit</button>
    </form>
-
-   <button onClick={forceRender}>Render</button>
 
    <ul>
     {posts.map(value => 

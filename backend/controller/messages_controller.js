@@ -7,16 +7,16 @@ exports.messages_list = asyncHandler(async (req, res, next) => {
     console.log('hello');
 })
 
-exports.messages_post = asyncHandler(async (req, res, next) => {
-    const message = new messages({
-        name: "User",
-        message: "Hello",
-        postDate: new Date()
-    });
-    await message.save();
-})
+// exports.messages_post2 = asyncHandler(async (req, res, next) => {
+//     const message = new messages({
+//         name: "User",
+//         message: "Hello",
+//         postDate: new Date()
+//     });
+//     await message.save();
+// })
 
-exports.messages_post2 = asyncHandler(async (req, res, next) => {
+exports.messages_post = asyncHandler(async (req, res, next) => {
     const message = new messages({
         name: req.body.name,
         message: req.body.message,

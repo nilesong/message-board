@@ -7,8 +7,8 @@ const mesController = require("../controller/messages_controller")
 router.get('/post', mesController.messages_list);
 
 //Create
+// router.post('/post2', mesController.messages_post2);
 router.post('/post', mesController.messages_post);
-router.post('/post2', mesController.messages_post2);
 
 //Delete
 router.delete('/delete/:id', mesController.messages_delete)
