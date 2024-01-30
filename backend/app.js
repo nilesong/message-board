@@ -18,9 +18,7 @@ async function main() {
 app.use(cors())
 
 //Parse JSON
-// parse application/x-www-form-urlencoded
-// app.use(express.urlencoded({ extended: true }));
-// parse application/json
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Routes

@@ -11,7 +11,6 @@ router.post('/post', mesController.messages_post);
 router.post('/post2', mesController.messages_post2);
 
 //Delete
-router.delete('/delete/:id', mesController.messages_delete2)
-router.delete('/delete2/', mesController.messages_delete)
+router.delete('/delete/:id', mesController.messages_delete)
 
 module.exports = router;
