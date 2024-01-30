@@ -61,6 +61,8 @@ function App(){
       postDate: new Date()
     }
     postMessage(sentMessage)
+    event.target[0].value = "";
+    event.target[1].value = "";
     event.preventDefault();
   }
 
@@ -91,12 +93,12 @@ function App(){
     <button type="submit">Submit</button>
    </form>
 
-   <ul>
+    <ul>
     {posts.map(value => 
-    <>
-      <li key={value._id}>{value.name} {value.message} {value.postDate}</li>
+    <li key={value._id}>
+      <div>{value.name} {value.message} {value.postDate}</div>
       <button onClick={() => handleDelete(value._id)}>Delete</button>
-    </>
+    </li>
     )}
     </ul>
     
