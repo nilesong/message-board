@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import './App.css'
 
 function App(){
 
@@ -86,17 +87,18 @@ function App(){
    {/* <button onClick={handleCreate}>Create</button> */}
 
    <form onSubmit={handleSubmit}>
-    <label htmlFor="name">Name: </label>
-    <input type="text" name="name" id="name" />
-    <label htmlFor="message">Message: </label>
-    <textarea name="message" id="message" cols="30" rows="10"></textarea>
-    <button type="submit">Submit</button>
+    <input type="text" name="name" id="name" placeholder="Name"/>
+    <div>
+    <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
+    <div><button type="submit">Submit</button></div>
+    </div>
    </form>
 
-    <ul>
+    <ul className="posts">
     {posts.map(value => 
     <li key={value._id}>
-      <div>{value.name} {value.message} {value.postDate}</div>
+      <div><span>{value.name}</span> <span>{value.postDate}</span></div>
+      <p>{value.message}</p>
       <button onClick={() => handleDelete(value._id)}>Delete</button>
     </li>
     )}
