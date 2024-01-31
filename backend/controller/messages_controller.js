@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 exports.messages_list = asyncHandler(async (req, res, next) => {
     const allMessages = await messages.find().exec();
     res.json(allMessages);
-    console.log('hello');
+    console.log('React app fetching');
 })
 
 // exports.messages_post2 = asyncHandler(async (req, res, next) => {
