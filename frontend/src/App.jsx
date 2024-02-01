@@ -78,26 +78,39 @@ function App(){
     })
   }
 
+  const dateFormat = (date) => {
+    const monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const dateString = date.substring(0,10);
+    const postDate = new Date(dateString);
+    const postMonth = monthArray[postDate.getMonth()];
+    const postDay = postDate.getDate();
+    const postYear = postDate.getFullYear();
+    return `${postMonth} ${postDay}, ${postYear}`;
+  }
 
   
   return (
   <>
   
-   <h1>Message Board</h1>
+   <header>
+   <img src="./src/assets/logo.svg" alt="test" className="logo"/>
+   <p>Github logo</p>
    {/* <button onClick={handleCreate}>Create</button> */}
+   </header>
 
+   <div className="title"><h1>Message Board</h1></div>
    <form onSubmit={handleSubmit}>
-    <input type="text" name="name" id="name" placeholder="Name"/>
     <div>
+    <input type="text" name="name" id="name" placeholder="Name"/>
     <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
     <div><button type="submit">Submit</button></div>
     </div>
    </form>
 
     <ul className="posts">
-    {posts.map(value => 
+    {posts.toReversed().map(value => 
     <li key={value._id}>
-      <div><span>{value.name}</span> <span>{value.postDate}</span></div>
+      <div><span className="username">{value.name}</span> <span className="postDate">{dateFormat(value.postDate)}</span></div>
       <p>{value.message}</p>
       <button onClick={() => handleDelete(value._id)}>Delete</button>
     </li>
