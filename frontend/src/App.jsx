@@ -93,7 +93,7 @@ function App(){
   <>
   
    <header>
-   <img src="./src/assets/github.svg" alt="test" className="GitHub"/>
+   <img src="./src/assets/github.svg" alt="test" className="logo"/>
    {/* <button onClick={handleCreate}>Create</button> */}
    </header>
 
