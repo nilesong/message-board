@@ -1,0 +1,9 @@
+Frontend
+1. Add loading
+2. Add EDIT button
+3. Add threads/authentication
+
+Backend
+1. Add EDIT/UPDATE
+2. Add authentication
+3. Fix endless fetch

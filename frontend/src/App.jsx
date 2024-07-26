@@ -4,6 +4,7 @@ import './App.css'
 function App(){
 
   const [posts, setPosts] = useState([]);
+  const [visible, setVisible] = useState(false)
   // const [updateDisplay, setUpdateDisplay] = useState(0);
 
   //TO FIX INFINITE LOOP
@@ -44,6 +45,17 @@ function App(){
   //   }
   // }
   
+
+  //Edit Post
+  const handleEdit = (event) =>{
+    setVisible(!visible);
+  }
+
+  //Edit Post 2
+  const handleEditPost = () => {
+    setVisible(!visible);
+  }
+
   //Delete Post
   const handleDelete = async (id) => {
     try{
@@ -65,6 +77,7 @@ function App(){
     event.target[0].value = "";
     event.target[1].value = "";
     event.preventDefault();
+    setVisible(!visible);
   }
 
   const postMessage = async (message) => {
@@ -111,6 +124,20 @@ function App(){
     <li key={value._id}>
       <div><span className="username">{value.name}</span> <span className="postDate">{dateFormat(value.postDate)}</span></div>
       <p>{value.message}</p>
+      {visible && (
+        <>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input type="text" name="name" id="name" placeholder="Name"/>
+            <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
+            <div><button type="submit">Submit</button></div>
+          </div>
+        </form>
+
+        </>
+        )
+      }
+      {!visible && <button onClick={handleEdit}>Edit</button>}
       <button onClick={() => handleDelete(value._id)}>Delete</button>
     </li>
     )}
