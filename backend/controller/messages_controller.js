@@ -30,6 +30,19 @@ exports.messages_post = asyncHandler(async (req, res, next) => {
 //     res.send('not yet done')
 // })
 
+exports.messages_put = asyncHandler(async (req, res, next) => {
+    const message = await messages.find({_id: req.params.id}).exec()
+    if (message.length > 0){
+        await messages.findByIdAndUpdate({_id: req.params.id}, {
+            message: req.body.message
+        }).exec()
+    } else{
+        res.send('ID not found')
+    }
+    // await message.save();
+})
+
+
 exports.messages_delete = asyncHandler(async (req, res, next) => {
     const message = await messages.find({_id: req.params.id}).exec()
     if (message.length > 0){
