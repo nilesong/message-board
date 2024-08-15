@@ -46,14 +46,33 @@ function App(){
   // }
   
 
-  //Edit Post
-  const handleEdit = (event) =>{
+  //Edit Post Toggle
+  const handleEdit = () =>{
     setVisible(!visible);
   }
 
-  //Edit Post 2
-  const handleEditPost = () => {
+  //Edit Post Message
+  const handleEditPost = (event, id) => {
+    const sentMessage = {
+      message: event.target[0].value,
+    }
+    postEdit(sentMessage, id);
+    event.target[0].value = "";
+    event.target[1].value = "";
+    event.preventDefault();
     setVisible(!visible);
+  }
+
+  //Send Edit
+  const postEdit = async (message, id) => {
+    await fetch(`http://localhost:4000/edit/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      }, 
+      body: JSON.stringify(message)
+    })
   }
 
   //Delete Post
@@ -80,6 +99,7 @@ function App(){
     setVisible(!visible);
   }
 
+  //Send Post
   const postMessage = async (message) => {
     await fetch('http://localhost:4000/post', {
       method: 'POST',
@@ -126,9 +146,8 @@ function App(){
       <p>{value.message}</p>
       {visible && (
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(event) => handleEditPost(event, value._id)}>
           <div>
-            <input type="text" name="name" id="name" placeholder="Name"/>
             <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
             <div><button type="submit">Submit</button></div>
           </div>
