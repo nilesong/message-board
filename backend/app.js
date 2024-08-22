@@ -1,6 +1,10 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const users = require("./model/users")
 
 //Mongoose
 const mongoose = require("mongoose");
@@ -20,6 +24,45 @@ app.use(cors())
 //Parse JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+app.use(passport.session());
+
+
+//Passport
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await users.findOne({ username: username });
+      if (!user) {
+        console.log('loginfail')
+        return done(null, false, { message: "Incorrect username" });
+      };
+      console.log('userok');
+      if (user.password !== password) {
+        console.log('loginfail')
+        return done(null, false, { message: "Incorrect password" });
+      };
+      console.log('loginok')
+      return done(null, user);
+    } catch(err) {
+      return done(err);
+    };
+  })
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await users.findById(id);
+    done(null, user);
+  } catch(err) {
+    done(err);
+  };
+});
+
 
 //Routes
 var indexRouter = require("./routes/index")
@@ -28,6 +71,28 @@ app.use('/', indexRouter)
 
 app.get('/', (req,res) => {
     res.send('hello')
+})
+
+app.post("/login",
+  passport.authenticate("local", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    res.redirect(`/success/${req.user.username}`)
+  }
+);
+
+app.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("http://localhost:3000/login");
+  });
+});
+
+app.get('/fail', (req,res) => {
+  res.send('login fail')
 })
 
 //Listen at port 4000

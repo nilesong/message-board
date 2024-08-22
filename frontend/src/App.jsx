@@ -5,19 +5,31 @@ function App(){
 
   const [posts, setPosts] = useState([]);
   const [visible, setVisible] = useState(false)
+  const [username, setUsername] = useState()
   // const [updateDisplay, setUpdateDisplay] = useState(0);
+
+
+  //GET USERNAME
+  useEffect(()=>{
+    let URL = window.location.pathname
+    let username = URL.slice(8)
+    setUsername(username);
+  },[])
 
   //TO FIX INFINITE LOOP
   useEffect(()=>{
-    const fetchData = async () => {
-      const data = await fetch('http://localhost:4000/post')
-      const json = await data.json();
-      setPosts(json);
+    if(username){
+      const fetchData = async () => {
+        // const data = await fetch(`http://localhost:4000/post/${username}`)
+        const data = await fetch(`http://localhost:4000/post/`)
+        const json = await data.json();
+        setPosts(json);
+      }
+    
+      // call the function
+      setInterval(fetchData, 5000)
     }
-  
-    // call the function
-    setInterval(fetchData, 5000)
-  }, [])
+  }, [username])
 
   // useEffect(()=>{
   //   const fetchData = async () => {
@@ -45,6 +57,7 @@ function App(){
   //   }
   // }
   
+
 
   //Edit Post Toggle
   const handleEdit = () =>{
@@ -88,6 +101,7 @@ function App(){
   //Submit Post
   const handleSubmit = (event) => {
     const sentMessage = {
+      // thread: username,
       name: event.target[0].value,
       message: event.target[1].value,
       postDate: new Date()
