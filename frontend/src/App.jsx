@@ -12,16 +12,15 @@ function App(){
   //GET USERNAME
   useEffect(()=>{
     let URL = window.location.pathname
-    let username = URL.slice(8)
-    setUsername(username);
+    let user = URL.slice(8)
+    setUsername(user);
   },[])
 
   //TO FIX INFINITE LOOP
   useEffect(()=>{
     if(username){
       const fetchData = async () => {
-        // const data = await fetch(`http://localhost:4000/post/${username}`)
-        const data = await fetch(`http://localhost:4000/post/`)
+        const data = await fetch(`http://localhost:4000/post/${username}`)
         const json = await data.json();
         setPosts(json);
       }
@@ -100,11 +99,13 @@ function App(){
 
   //Submit Post
   const handleSubmit = (event) => {
+    console.log(username);
     const sentMessage = {
       // thread: username,
       name: event.target[0].value,
       message: event.target[1].value,
-      postDate: new Date()
+      postDate: new Date(),
+      thread: username,
     }
     postMessage(sentMessage)
     event.target[0].value = "";

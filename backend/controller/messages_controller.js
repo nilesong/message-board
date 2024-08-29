@@ -2,10 +2,9 @@ const messages = require("../model/messages")
 const asyncHandler = require("express-async-handler");
 
 exports.messages_list = asyncHandler(async (req, res, next) => {
-    const allMessages = await messages.find().exec();
+    const allMessages = await messages.find({thread: req.params.username}).exec();
     res.json(allMessages);
     console.log('React app fetching');
-    console.log(req.params.username);
 })
 
 // exports.messages_post2 = asyncHandler(async (req, res, next) => {
@@ -21,7 +20,8 @@ exports.messages_post = asyncHandler(async (req, res, next) => {
     const message = new messages({
         name: req.body.name,
         message: req.body.message,
-        postDate: req.body.postDate
+        postDate: req.body.postDate,
+        thread: req.body.thread,
     })
     await message.save();
 })

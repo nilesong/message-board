@@ -5,10 +5,10 @@ const { DateTime } = require('luxon');
 const Schema = mongoose.Schema;
 
 const MessageSchema = new Schema({
-  // thread: String,
   name: String,
   message: String,
   postDate: Date,
+  thread: String,
 });
 
 module.exports = mongoose.model("Message", MessageSchema);
