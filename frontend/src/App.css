@@ -136,3 +136,10 @@ ul>li>button:hover {
 .username {
   font-weight: bold;
 }
+
+.editDiv {
+  width: 40rem;
+  display: grid;
+  grid-template-rows: 1fr 0.1fr;
+  gap: 0px;
+}

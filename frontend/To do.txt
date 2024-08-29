@@ -1,8 +1,8 @@
 Frontend
 1. Add loading
 2. Add EDIT button (OK)
-3. Add threads/authentication
-4. Create separate handler for login form instead of default
+3. Add threads/authentication (OK)
+4. Create separate handler for login form instead of default (OK)
 5. Routes for login, signup and separate thread
 
 Backend
@@ -13,8 +13,8 @@ Backend
 5. Make success/fail redirect to back to API to fetch data - threads
 
 Login
-1. Upon login success get username/thread name
-2. Use thread name to find all related posts in MongoDB
-3. Redirect back to React /thread link
-4. Fetch thread data
-5. Add thread to messages model MongoDB - currently bugged
+1. Upon login success get username/thread name (OK)
+2. Use thread name to find all related posts in MongoDB (OK)
+3. Redirect back to React /thread link (OK)
+4. Fetch thread data (OK)
+5. Add thread to messages model MongoDB - currently bugged (OK)

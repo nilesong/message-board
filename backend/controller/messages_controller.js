@@ -5,6 +5,7 @@ exports.messages_list = asyncHandler(async (req, res, next) => {
     const allMessages = await messages.find({thread: req.params.username}).exec();
     res.json(allMessages);
     console.log('React app fetching');
+    console.log(req.session)
 })
 
 // exports.messages_post2 = asyncHandler(async (req, res, next) => {

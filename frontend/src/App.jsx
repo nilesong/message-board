@@ -57,7 +57,6 @@ function App(){
   // }
   
 
-
   //Edit Post Toggle
   const handleEdit = () =>{
     setVisible(!visible);
@@ -142,7 +141,9 @@ function App(){
   
    <header>
    <img src="./src/assets/github.svg" alt="test" className="logo"/>
-   {/* <button onClick={handleCreate}>Create</button> */}
+   <form action="http://localhost:4000/logout" method="get">
+    <button type="submit">Logout</button>
+   </form>
    </header>
 
    <div className="title"><h1>Message Board</h1></div>
@@ -162,7 +163,7 @@ function App(){
       {visible && (
         <>
         <form onSubmit={(event) => handleEditPost(event, value._id)}>
-          <div>
+          <div className="editDiv">
             <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
             <div><button type="submit">Submit</button></div>
           </div>

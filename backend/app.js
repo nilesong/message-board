@@ -82,17 +82,17 @@ app.post("/login",
   }
 );
 
-app.get("/log-out", (req, res, next) => {
+app.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);
     }
-    res.redirect("http://localhost:3000/login");
+    res.redirect("http://localhost:3000/");
   });
 });
 
 app.get('/fail', (req,res) => {
-  res.send('login fail')
+  res.redirect("http://localhost:3000/login")
 })
 
 //Listen at port 4000
