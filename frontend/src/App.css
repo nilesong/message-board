@@ -159,3 +159,7 @@ ul>li>button:hover {
   font-weight: bold;
   background-color: #638889;
 }
+
+.hidden {
+  display: none;
+}

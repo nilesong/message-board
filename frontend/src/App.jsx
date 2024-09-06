@@ -58,8 +58,9 @@ function App(){
   
 
   //Edit Post Toggle
-  const handleEdit = () =>{
-    setVisible(!visible);
+  const handleEdit = (event) =>{
+    event.target.classList.toggle("hidden");
+    event.target.parentElement.children[2].classList.toggle("hidden");
   }
 
   //Edit Post Message
@@ -71,7 +72,8 @@ function App(){
     event.target[0].value = "";
     event.target[1].value = "";
     event.preventDefault();
-    setVisible(!visible);
+    event.target.classList.toggle("hidden");
+    event.target.parentElement.children[3].classList.toggle("hidden");
   }
 
   //Send Edit
@@ -159,19 +161,13 @@ function App(){
     <li key={value._id}>
       <div><span className="username">{value.name}</span> <span className="postDate">{dateFormat(value.postDate)}</span></div>
       <p>{value.message}</p>
-      {visible && (
-        <>
-        <form onSubmit={(event) => handleEditPost(event, value._id)}>
-          <div className="editDiv">
-            <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
-            <div><button type="submit">Submit</button></div>
-          </div>
-        </form>
-
-        </>
-        )
-      }
-      {!visible && <button onClick={handleEdit}>Edit</button>}
+      <form className="hidden" onSubmit={(event) => handleEditPost(event, value._id)}>
+        <div className="editDiv">
+          <textarea name="message" id="message" placeholder="Write your thoughts..." cols="30" rows="10"></textarea>
+          <div><button type="submit">Submit</button></div>
+        </div>
+      </form>
+      <button className="" onClick={handleEdit}>Edit</button>
       <button onClick={() => handleDelete(value._id)}>Delete</button>
     </li>
     )}
