@@ -68,11 +68,6 @@ passport.deserializeUser(async (id, done) => {
 var indexRouter = require("./routes/index")
 app.use('/', indexRouter)
 
-
-app.get('/', (req,res) => {
-    res.send('hello')
-})
-
 app.post("/login",
   passport.authenticate("local", {
     failureRedirect: "/fail",

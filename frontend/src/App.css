@@ -10,6 +10,7 @@ header {
   width: 100%;
   background-color: aqua;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   background-color: #638889;
 }
@@ -142,4 +143,19 @@ ul>li>button:hover {
   display: grid;
   grid-template-rows: 1fr 0.1fr;
   gap: 0px;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #638889;
+}
+
+.logout>span {
+  color: white;
+  font-weight: bold;
+  background-color: #638889;
 }

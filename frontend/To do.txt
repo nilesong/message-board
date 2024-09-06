@@ -3,14 +3,15 @@ Frontend
 2. Add EDIT button (OK)
 3. Add threads/authentication (OK)
 4. Create separate handler for login form instead of default (OK)
-5. Routes for login, signup and separate thread
+5. Routes for login, signup and separate thread (OK)
+6. Fix edit popping up for all messages
 
 Backend
 1. Add EDIT/UPDATE (OK)
 2. Add authentication
 3. Fix endless fetch
 4. Understand passport - session, where does passport.use go, serialize/deserialize
-5. Make success/fail redirect to back to API to fetch data - threads
+5. Make success/fail redirect to back to API to fetch data - threads (OK)
 
 Login
 1. Upon login success get username/thread name (OK)

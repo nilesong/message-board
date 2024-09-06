@@ -5,17 +5,7 @@ exports.messages_list = asyncHandler(async (req, res, next) => {
     const allMessages = await messages.find({thread: req.params.username}).exec();
     res.json(allMessages);
     console.log('React app fetching');
-    console.log(req.session)
 })
-
-// exports.messages_post2 = asyncHandler(async (req, res, next) => {
-//     const message = new messages({
-//         name: "User",
-//         message: "Hello",
-//         postDate: new Date()
-//     });
-//     await message.save();
-// })
 
 exports.messages_post = asyncHandler(async (req, res, next) => {
     const message = new messages({
@@ -26,11 +16,6 @@ exports.messages_post = asyncHandler(async (req, res, next) => {
     })
     await message.save();
 })
-
-
-// exports.messages_create_get = asyncHandler(async (req,res,next) => {
-//     res.send('not yet done')
-// })
 
 exports.messages_put = asyncHandler(async (req, res, next) => {
     const message = await messages.find({_id: req.params.id}).exec()
@@ -43,7 +28,6 @@ exports.messages_put = asyncHandler(async (req, res, next) => {
     }
     // await message.save();
 })
-
 
 exports.messages_delete = asyncHandler(async (req, res, next) => {
     const message = await messages.find({_id: req.params.id}).exec()

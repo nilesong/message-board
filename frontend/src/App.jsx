@@ -100,7 +100,6 @@ function App(){
   const handleSubmit = (event) => {
     console.log(username);
     const sentMessage = {
-      // thread: username,
       name: event.target[0].value,
       message: event.target[1].value,
       postDate: new Date(),
@@ -140,8 +139,8 @@ function App(){
   <>
   
    <header>
-   <img src="./src/assets/github.svg" alt="test" className="logo"/>
-   <form action="http://localhost:4000/logout" method="get">
+   <form action="http://localhost:4000/logout" method="get" className="logout">
+    <span>{username}</span>
     <button type="submit">Logout</button>
    </form>
    </header>

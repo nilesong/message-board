@@ -5,6 +5,7 @@ import App from './App.jsx'
 import Login from './Login.jsx';
 import Fail from './Fail.jsx'
 import Signup from './Signup.jsx';
+import SignupFail from './SingupFail.jsx';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "signup/",
     element: <Signup />,
+  },
+  {
+    path: "signupfail/",
+    element: <SignupFail />,
   },
 ]);
 

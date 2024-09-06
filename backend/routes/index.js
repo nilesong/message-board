@@ -5,12 +5,10 @@ const mesController = require("../controller/messages_controller")
 const userController = require("../controller/users_controller")
 
 //Main page
-// router.get('/post/:username', mesController.messages_list);
 router.get('/post/:username', mesController.messages_list);
 router.get('/success/:username', userController.user_loginSuccess)
 
 //Create
-// router.post('/post2', mesController.messages_post2);
 router.post('/post', mesController.messages_post);
 router.post('/register', userController.user_register);
 
