@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom"
 
+const loginURL = "http://localhost:4000/login";
+
 function Login(){
 
     return(
         <>
-            <form action="http://localhost:4000/login" method="post">
+            <form action={loginURL} method="post">
+                <h1>LOGIN:</h1>
                 <label htmlFor="username">Username</label>
                 <input id="username" name="username" placeholder="username" type="text" required />
                 <label htmlFor="password">Password</label>

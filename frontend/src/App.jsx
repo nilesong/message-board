@@ -3,9 +3,12 @@ import './App.css'
 
 function App(){
 
+  const backendURL = "http://localhost:4000";
+  const logoutURL = "http://localhost:4000/logout";
+
   const [posts, setPosts] = useState([]);
-  const [visible, setVisible] = useState(false)
-  const [username, setUsername] = useState()
+  const [visible, setVisible] = useState(false);
+  const [username, setUsername] = useState();
 
   //Get username
   useEffect(()=>{
@@ -18,7 +21,7 @@ function App(){
   useEffect(()=>{
     if(username){
       const fetchData = async () => {
-        const data = await fetch(`http://localhost:4000/post/${username}`)
+        const data = await fetch(`${backendURL}/post/${username}`)
         const json = await data.json();
         setPosts(json);
       }
@@ -49,7 +52,7 @@ function App(){
 
   //Send Edit
   const postEdit = async (message, id) => {
-    await fetch(`http://localhost:4000/edit/${id}`, {
+    await fetch(`${backendURL}/edit/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type':'application/json',
@@ -62,7 +65,7 @@ function App(){
   //Delete Post
   const handleDelete = async (id) => {
     try{
-      await fetch(`http://localhost:4000/delete/${id}`, {method: 'DELETE'})
+      await fetch(`${backendURL}/delete/${id}`, {method: 'DELETE'})
     }catch(err){
       console.error(err);
     }
@@ -87,7 +90,7 @@ function App(){
 
   //Send Post
   const postMessage = async (message) => {
-    await fetch('http://localhost:4000/post', {
+    await fetch(`${backendURL}/post`, {
       method: 'POST',
       headers: {
         'Content-Type':'application/json',
@@ -112,7 +115,7 @@ function App(){
   <>
   
    <header>
-   <form action="http://localhost:4000/logout" method="get" className="logout">
+   <form action={logoutURL} method="get" className="logout">
     <span>{username}</span>
     <button type="submit">Logout</button>
    </form>

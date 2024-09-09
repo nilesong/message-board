@@ -19,3 +19,7 @@ Login
 3. Redirect back to React /thread link (OK)
 4. Fetch thread data (OK)
 5. Add thread to messages model MongoDB - currently bugged (OK)
+
+
+const mongoDB = "mongodb+srv://boardadmin:AW4635VlniBwIhWe@cluster0.s73tn0s.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB2 = "mongodb+srv://testuser2:BJPf2aQAfcovh6T4@cluster0.s73tn0s.mongodb.net/?retryWrites=true&w=majority"

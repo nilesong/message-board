@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom"
 
+const registerURL = "http://localhost:4000/register";
+
 function Signup(){
 
     return(
         <>
-        <form action="http://localhost:4000/register" method="post">
+        <form action={registerURL} method="post">
+            <h1>SIGN UP:</h1>
             <label htmlFor="username">Username</label>
             <input id="username" name="username" placeholder="username" type="text" required/>
             <label htmlFor="password">Password</label>
