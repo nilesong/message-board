@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 const session = require("express-session");
+// const session = require("cookie-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const users = require("./model/users")
