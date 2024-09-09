@@ -6,17 +6,15 @@ function App(){
   const [posts, setPosts] = useState([]);
   const [visible, setVisible] = useState(false)
   const [username, setUsername] = useState()
-  // const [updateDisplay, setUpdateDisplay] = useState(0);
 
-
-  //GET USERNAME
+  //Get username
   useEffect(()=>{
     let URL = window.location.pathname
     let user = URL.slice(8)
     setUsername(user);
   },[])
 
-  //TO FIX INFINITE LOOP
+  //Fetch from backend
   useEffect(()=>{
     if(username){
       const fetchData = async () => {
@@ -29,33 +27,6 @@ function App(){
       setInterval(fetchData, 5000)
     }
   }, [username])
-
-  // useEffect(()=>{
-  //   const fetchData = async () => {
-  //     const data = await fetch('http://localhost:4000/post')
-  //     const json = await data.json();
-  //     setPosts(json);
-  //   }
-  
-  //   // call the function
-  //   fetchData()
-  // }, [])
-
-  //Force re-render
-  // const forceRender = () => {
-  //   setUpdateDisplay(updateDisplay+1);
-  //   console.log(updateDisplay);
-  // }
-
-  //Create new post
-  // const handleCreate = async () => {
-  //   try{
-  //     await fetch(`http://localhost:4000/post2`, {method: 'POST'})
-  //   }catch(err){
-  //     console.error(err);
-  //   }
-  // }
-  
 
   //Edit Post Toggle
   const handleEdit = (event) =>{
