@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const registerURL = "http://localhost:4000/register";
+const registerURL = "https://message-board-backend-xgp8.onrender.com/register";
 
 function SignupFail(){
 

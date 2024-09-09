@@ -3,8 +3,8 @@ import './App.css'
 
 function App(){
 
-  const backendURL = "http://localhost:4000";
-  const logoutURL = "http://localhost:4000/logout";
+  const backendURL = "https://message-board-backend-xgp8.onrender.com";
+  const logoutURL = "https://message-board-backend-xgp8.onrender.com/logout";
 
   const [posts, setPosts] = useState([]);
   const [visible, setVisible] = useState(false);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const loginURL = "http://localhost:4000/login";
+const loginURL = "https://message-board-backend-xgp8.onrender.com/login";
 
 function Login(){
 
