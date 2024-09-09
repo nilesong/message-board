@@ -11,7 +11,6 @@ const users = require("./model/users")
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const mongoDB = process.env.DATABASE_URI
-// const mongoDB = "mongodb+srv://testuser2:BJPf2aQAfcovh6T4@cluster0.s73tn0s.mongodb.net/?retryWrites=true&w=majority"
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -93,5 +92,4 @@ app.get('/fail', (req,res) => {
 //Listen at port 4000
 app.listen(4000, ()=>{
     console.log(`listening on port 4000`)
-    console.log(mongoDB);
 })
