@@ -81,12 +81,12 @@ app.get("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("http://localhost:3000/");
+    res.redirect("https://message-board-nn7k.onrender.com/");
   });
 });
 
 app.get('/fail', (req,res) => {
-  res.redirect("http://localhost:3000/login")
+  res.redirect("https://message-board-nn7k.onrender.com/login")
 })
 
 //Listen at port 4000
